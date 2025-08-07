@@ -1,0 +1,30 @@
+# ✅ MySQLデータを無視
+docker/mysql/data/
+
+!.gitkeep
+
+# ✅ .envを無視（src直下）
+src/.env
+
+
+
+# # ✅ .envを無視（src直下）
+# src/.env
+
+# # ✅ Laravelで不要なディレクトリ
+# /vendor
+# /node_modules
+# /public/storage
+# /storage/*.key
+# .phpunit.result.cache
+
+# # ✅ IDEの設定ファイル
+# .vscode/
+# .idea/
+
+# # ✅ その他ログやバックアップ
+# npm-debug.log
+# yarn-error.log
+# .env.backup
+
+
