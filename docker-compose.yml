@@ -15,7 +15,7 @@ services:
         build: ./docker/php
         volumes:
             - ./src:/var/www/
-        user: "${UID}:${GID}"  # 👈 win WS　　パーミッション対　　これを追加
+        user: "${UID}:${GID}"  # 👈 これを追加
 
     mysql:
         image: mysql:8.0.26

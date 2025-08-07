@@ -1,0 +1,130 @@
+/* ========================================
+   Layout Header
+   ======================================== */
+.header {
+  background: linear-gradient(90deg, #1f2937, #111827);
+  padding: 1rem 2rem;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  /* 追加：フローティング用 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header__logo a {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 1px;
+  color: #ffffff;          /* ✅ 明示的に白 */
+  transition: color 0.2s ease-in-out;
+}
+
+.header__logo a:hover {
+  color: #e0e7ff;          /* ✅ 明るめに変化して視認性維持 */
+}
+
+.header__nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.header__link {
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.header__link:hover {
+  color: #ffffff;
+}
+
+
+/* ========================================
+   Layout Main
+   ======================================== */
+.main {
+  padding: 3rem 1.5rem;
+  max-width: 2048px;
+ margin: 40px auto 0; /* ←ここ */
+  box-sizing: border-box;
+  min-height: 70vh;
+}
+
+
+
+/* ========================================
+   Footer
+   ======================================== */
+.footer {
+  padding: 1.5rem 2rem;
+  text-align: right;
+  background-color: #f3f4f6;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer__text {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+
+/* ========================================
+   Typography
+   ======================================== */
+body {
+  font-family: 'Helvetica Neue', 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1f2937;
+  background-color: #f9fafb;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ========================================
+   共通 .button クラス
+   ======================================== */
+.button {
+  display: inline-block;
+  background: linear-gradient(90deg, #3b82f6, #2563eb); /* 青のグラデーション */
+  color: #ffffff;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8); /* 少し濃いグラデーションに変化 */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
