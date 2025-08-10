@@ -26,10 +26,9 @@
         </div>
         @endif
 
-
-
         <form method="POST" action="{{ route('dictionary.store') }}" novalidate>
             @csrf
+            
             <div class="form-group">
                 <label for="keyword">キーワード</label>
                 <input id="keyword" name="keyword" class="input" value="{{ old('keyword') }}" required>

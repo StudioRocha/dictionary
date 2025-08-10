@@ -41,6 +41,7 @@ class DictionaryController extends Controller
         return redirect()
             ->route('dictionary.create')     // ← ここを index から create に変更
             ->with('success', '登録しました'); // Blade の session('success') が拾う
+            
     }
 
 

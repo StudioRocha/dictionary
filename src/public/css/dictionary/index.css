@@ -1,218 +1,266 @@
-.dict-index{
-  background:#fff;
-  border:1px solid #ddd;
-  border-radius:6px;
-  padding:1rem 1.25rem;
-  max-width:900px;
-  margin:0 auto;
-  box-sizing:border-box;
+.dict-index {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 /* ヘッダー行 */
-.dict-index__head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1rem;
-  margin-bottom:1rem;
+.dict-index__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
-.dict-index__head h2{ margin:0; font-size:1.1rem; }
+.dict-index__head h2 {
+    margin: 0;
+    font-size: 1.1rem;
+}
 
-.dict-index__actions{ display:flex; align-items:center; gap:.75rem; }
+.dict-index__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
 
 /* 検索バー */
-.dict-index__search{
-  display:flex; gap:.5rem; align-items:center;
+.dict-index__search {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
 }
-.dict-index__search input{
-  width:260px; height:36px; padding:0 .6rem;
-  border:1px solid #999; border-radius:4px; box-sizing:border-box;
+.dict-index__search input {
+    width: 260px;
+    height: 36px;
+    padding: 0 0.6rem;
+    border: 1px solid #999;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 .dict-index__search button,
-.button-link{
-  height:36px; padding:0 .9rem; border:1px solid #999; border-radius:6px;
-  background:#f8f8f8; cursor:pointer; text-decoration:none; color:#111;
+.button-link {
+    height: 36px;
+    padding: 0 0.9rem;
+    border: 1px solid #999;
+    border-radius: 6px;
+    background: #f8f8f8;
+    cursor: pointer;
+    text-decoration: none;
+    color: #111;
 }
-.dict-index__search button:hover, .button-link:hover{ background:#e8e8e8; }
+.dict-index__search button:hover,
+.button-link:hover {
+    background: #e8e8e8;
+}
 
 /* 一覧 */
 .dict-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  padding-left: 12px; /* ← 左にスペース追加 */
-   padding-top: 32px; /* ← 左にスペース追加 */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-left: 12px; /* ← 左にスペース追加 */
+    padding-top: 32px; /* ← 左にスペース追加 */
 }
-
 
 /* 4カラム：日付 / ユーザー / キーワード / 説明 */
 .dict-item {
-  display: grid;
-  grid-template-columns: 110px 140px 180px 1fr;
-  gap: 12px;
-  padding: .75rem 0;
-  border-top: 1px solid #eee;
+    display: grid;
+    grid-template-columns: 110px 140px 180px 1fr;
+    gap: 12px;
+    padding: 0.75rem 0;
+    border-top: 1px solid #eee;
 }
-.dict-item:first-child { border-top: none; }
+.dict-item:first-child {
+    border-top: none;
+}
 
 .dict-item__date {
-  color: #555;
-  white-space: nowrap;
-  font-size: .95rem;
+    color: #555;
+    white-space: nowrap;
+    font-size: 0.95rem;
 }
 
 .dict-item__user {
-  color: #666;
-  font-size: .9rem;
-  white-space: nowrap;
+    color: #666;
+    font-size: 0.9rem;
+    white-space: nowrap;
 }
 
 .dict-item__keyword {
-  font-weight: 700;
-  color: #111;
-  white-space: nowrap;        /* 折り返さない */
-  overflow: hidden;           /* はみ出し隠す */
-  text-overflow: ellipsis;    /* 省略記号 */
-  max-width: 100%;
-  display: inline-block;
+    font-weight: 700;
+    color: #111;
+    white-space: nowrap; /* 折り返さない */
+    overflow: hidden; /* はみ出し隠す */
+    text-overflow: ellipsis; /* 省略記号 */
+    max-width: 100%;
+    display: inline-block;
 }
 
 .dict-item__desc {
-  color: #333;
-  line-height: 1.55;
-  word-break: break-word;
-  overflow-wrap: anywhere;
-  font-size: .95rem;
+    color: #333;
+    line-height: 1.55;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    font-size: 0.95rem;
 }
 
 /* スマホは1カラムに崩す */
 @media (max-width: 640px) {
-  .dict-item {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-  .dict-item__user { font-size: .85rem; }
+    .dict-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+    .dict-item__user {
+        font-size: 0.85rem;
+    }
 }
 
-
 /* ===== スマホ対応（～640px） ===== */
-@media (max-width: 640px){
-  .dict-index{
-    padding: .85rem 1rem;
-  }
+@media (max-width: 640px) {
+    .dict-index {
+        padding: 0.85rem 1rem;
+    }
 
-  /* タイトルと右のボタンを縦積み＋幅100% */
-  .dict-index__head{
-    flex-direction: column;
-    align-items: stretch;
-    gap: .5rem;
-  }
-  .dict-index__actions{
-    justify-content: flex-end;   /* ボタンは右寄せ */
-  }
+    /* タイトルと右のボタンを縦積み＋幅100% */
+    .dict-index__head {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    .dict-index__actions {
+        justify-content: flex-end; /* ボタンは右寄せ */
+    }
 
-  /* 検索バー：折り返し＆入力は全幅 */
-  .dict-index__search{
-    flex-wrap: wrap;
-    gap: .5rem;
-  }
-  .dict-index__search input{
-    flex: 1 1 100%;
-    width: 100%;
-  }
-  .dict-index__search button{
-    flex: 0 0 auto;   /* ボタンは内容幅 */
-  }
+    /* 検索バー：折り返し＆入力は全幅 */
+    .dict-index__search {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .dict-index__search input {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+    .dict-index__search button {
+        flex: 0 0 auto; /* ボタンは内容幅 */
+    }
 
-  /* 一覧は1カラム（既に対応済みなら不要） */
-  .dict-item{
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-  .dict-item__user{
-    text-align: left;
-    font-size: .85rem;
-  }
+    /* 一覧は1カラム（既に対応済みなら不要） */
+    .dict-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+    .dict-item__user {
+        text-align: left;
+        font-size: 0.85rem;
+    }
 }
 
 /* ===== さらに狭い端末（～480px）でボタンを横幅そろえる ===== */
-@media (max-width: 480px){
-  .dict-index__actions .button-link{
-    width: 100%;           /* 右上の「登録画面へ」を全幅に */
-    text-align: center;
-  }
-  .dict-index__search button{
-    width: 100%;           /* 検索ボタンも全幅にしたい場合は有効化 */
-  }
+@media (max-width: 480px) {
+    .dict-index__actions .button-link {
+        width: 100%; /* 右上の「登録画面へ」を全幅に */
+        text-align: center;
+    }
+    .dict-index__search button {
+        width: 100%; /* 検索ボタンも全幅にしたい場合は有効化 */
+    }
 }
 
 /* コンテナ */
-.dict-index{
-  background:#fff;
-  border:1px solid #ddd;
-  border-radius:6px;
-  padding:1rem 1.25rem 1.25rem;
-  max-width:900px;
-  margin:0 auto;
-  box-sizing:border-box;
+.dict-index {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1rem 1.25rem 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 /* タイトル行：左タイトル / 右にボタン */
-.dict-index__head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1rem;
-  margin-bottom:.75rem; /* ← タイトルと検索フォームの間を詰める */
+.dict-index__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem; /* ← タイトルと検索フォームの間を詰める */
 }
-.dict-index__head h2{
-  margin:0;
-  font-size:1rem;       /* スクショ寄りに小さめ */
-  font-weight:600;
-  color:#333;
+.dict-index__head h2 {
+    margin: 0;
+    font-size: 1rem; /* スクショ寄りに小さめ */
+    font-weight: 600;
+    color: #333;
 }
 
 /* 右上ボタン */
-.button-link{
-  height:32px;          /* 少し低め */
-  padding:0 .8rem;
-  border:1px solid #bbb;
-  border-radius:6px;
-  background:#eee;
-  cursor:pointer;
-  text-decoration:none;
-  color:#111;
-  display:inline-flex; align-items:center; justify-content:center;
+.button-link {
+    height: 32px; /* 少し低め */
+    padding: 0 0.8rem;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    background: #eee;
+    cursor: pointer;
+    text-decoration: none;
+    color: #111;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
-.button-link:hover{ background:#e5e5e5; }
+.button-link:hover {
+    background: #e5e5e5;
+}
 
 /* 検索フォーム（左寄せで下に配置） */
-.dict-index__search{
-  display:flex;
-  gap:.5rem;
-  align-items:center;
-  margin-bottom:.5rem;  /* リストとの間 */
+.dict-index__search {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.5rem; /* リストとの間 */
 }
-.dict-index__search input{
-  width:320px;          /* スクショっぽく少し長め */
-  height:32px;
-  padding:0 .6rem;
-  border:1px solid #bbb; border-radius:4px;
-  box-sizing:border-box;
+.dict-index__search input {
+    width: 320px; /* スクショっぽく少し長め */
+    height: 32px;
+    padding: 0 0.6rem;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
-.dict-index__search button{
-  height:32px;
-  padding:0 .9rem;
-  border:1px solid #bbb; border-radius:6px;
-  background:#eee; color:#111; cursor:pointer;
+.dict-index__search button {
+    height: 32px;
+    padding: 0 0.9rem;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    background: #eee;
+    color: #111;
+    cursor: pointer;
 }
-.dict-index__search button:hover{ background:#e5e5e5; }
+.dict-index__search button:hover {
+    background: #e5e5e5;
+}
 
 /* スマホ：縦積み崩れ防止 */
-@media (max-width:640px){
-  .dict-index{ padding:.85rem 1rem 1rem; }
-  .dict-index__head{ flex-direction:column; align-items:stretch; gap:.5rem; }
-  .dict-index__actions{ display:flex; justify-content:flex-end; }
-  .dict-index__search{ flex-wrap:wrap; }
-  .dict-index__search input{ flex:1 1 100%; width:100%; }
+@media (max-width: 640px) {
+    .dict-index {
+        padding: 0.85rem 1rem 1rem;
+    }
+    .dict-index__head {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    .dict-index__actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .dict-index__search {
+        flex-wrap: wrap;
+    }
+    .dict-index__search input {
+        flex: 1 1 100%;
+        width: 100%;
+    }
 }
