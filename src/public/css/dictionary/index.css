@@ -69,7 +69,7 @@
 /* 4カラム：日付 / ユーザー / キーワード / 説明 */
 .dict-item {
     display: grid;
-    grid-template-columns: 120px 110px 140px 180px 1fr; /* 編集＋削除の2ボタン用に少し広め */
+    grid-template-columns: 120px 110px 110px 180px 1fr; /* 編集＋削除の2ボタン用に少し広め */
     gap: 12px;
     padding: 0.75rem;
     border-top: 1px solid #eee;

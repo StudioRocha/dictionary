@@ -12,16 +12,26 @@ class DictionaryController extends Controller
 
     public function index()
     {
+		// 一覧用クエリを作成（ユーザー名も同時に取得してN+1を回避）
 		$query = \App\Models\Dictionary::with('user:id,name');
 
 		if (request()->filled('q')) {
 			$q = request('q');
+			// 検索条件：キーワード、説明、ユーザー名の部分一致
 			$query->where(function ($sub) use ($q) {
-				$sub->where('keyword', 'like', "%$q%")
-					->orWhere('description', 'like', "%$q%");
+				$sub
+					// キーワードに部分一致
+					->where('keyword', 'like', "%$q%")
+					// 説明文に部分一致
+					->orWhere('description', 'like', "%$q%")
+					// 投稿者のユーザー名に部分一致（userリレーション経由）
+					->orWhereHas('user', function ($userQuery) use ($q) {
+						$userQuery->where('name', 'like', "%$q%");
+					});
 			});
 		}
 
+		// 並び替え
 		$sort = request('sort', 'new');
 		switch ($sort) {
 			case 'old':
@@ -39,6 +49,7 @@ class DictionaryController extends Controller
 				break;
 		}
 
+		// ページネーション（クエリ文字列を引き継ぎ）
 		$dictionaries = $query->paginate(10)->appends(request()->query());
 		return view('dictionary.index', compact('dictionaries'));
     }
@@ -94,7 +105,8 @@ class DictionaryController extends Controller
     public function destroy(\App\Models\Dictionary $dictionary)
     {
         $this->authorize('delete', $dictionary);
-        $dictionary->delete();
+		// 物理削除（SoftDeletes未使用のため）
+		$dictionary->delete();
 
         return back()->with('success', '削除しました');
     }

@@ -14,16 +14,17 @@ class DictionaryStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'keyword'     => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string'],
+            'keyword'     => ['required', 'string', 'max:10'],
+            'description' => ['required', 'string', 'max:50'],
         ];
     }
     public function messages(): array
     {
         return [
             'keyword.required' => 'キーワードは必須です。',
-            'keyword.max'      => 'キーワードは255文字以内で入力してください。',
+            'keyword.max'      => 'キーワードは10文字以内で入力してください。',
             'description.required' => '説明は必須です。',
+            'description.max'  => '説明は50文字以内で入力してください。',
         ];
     }
 }
