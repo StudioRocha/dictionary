@@ -28,13 +28,16 @@
     font-weight: 700;
     text-decoration: none;
     letter-spacing: 1px;
-    color: #ffffff; /* ✅ 明示的に白 */
+    color: #ffffff;
+    /* ✅ 明示的に白 */
     transition: color 0.2s ease-in-out;
-    white-space: nowrap; /* ✅ 改行させない */
+    white-space: nowrap;
+    /* ✅ 改行させない */
 }
 
 .header__logo a:hover {
-    color: #e0e7ff; /* ✅ 明るめに変化して視認性維持 */
+    color: #e0e7ff;
+    /* ✅ 明るめに変化して視認性維持 */
 }
 
 .header__nav {
@@ -51,6 +54,12 @@
 
 .header__link:hover {
     color: #ffffff;
+}
+
+
+
+.header__link.header__button {
+    color: #000000;
 }
 
 /* ========================================
@@ -83,11 +92,8 @@ body {
 }
 
 .button:hover {
-    background: linear-gradient(
-        90deg,
-        #2563eb,
-        #1d4ed8
-    ); /* 少し濃いグラデーションに変化 */
+    background: linear-gradient(90deg, #2563eb, #1d4ed8);
+    /* 少し濃いグラデーションに変化 */
     transform: translateY(-2px);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
@@ -106,8 +112,10 @@ body {
    ======================================== */
 /* 固定ヘッダーを考慮したメイン領域 */
 .main {
-    --header-h: 60px; /* ヘッダーの高さに合わせる */
-    flex: 1; /* 余った高さを占有 */
+    --header-h: 60px;
+    /* ヘッダーの高さに合わせる */
+    flex: 1;
+    /* 余った高さを占有 */
     margin-top: calc(var(--header-h) + 16px);
     max-width: 100%;
 }
@@ -133,10 +141,13 @@ body {
    ======================================== */
 :root {
     --header-h: 64px;
-} /* 固定ヘッダーの高さ */
+}
+
+/* 固定ヘッダーの高さ */
 
 .flash {
-    margin: calc(var(--header-h) + 12px) auto 12px; /* ← これが重要。ヘッダー回避 */
+    margin: calc(var(--header-h) + 12px) auto 12px;
+    /* ← これが重要。ヘッダー回避 */
     max-width: 900px;
     padding: 0 16px;
     box-sizing: border-box;
@@ -149,26 +160,31 @@ body {
     margin-bottom: 8px;
     font-size: 0.95rem;
 }
+
 .alert--error {
     background: #fff5f5;
     border-color: #f5c2c7;
     color: #b91c1c;
 }
+
 .alert--success {
     background: #e6ffed;
     border-color: #a7f3d0;
     color: #065f46;
 }
+
 .alert--warning {
     background: #fff8e1;
     border-color: #ffe08a;
     color: #7c5e10;
 }
+
 .alert--info {
     background: #e8f4ff;
     border-color: #b6e0fe;
     color: #0c4a6e;
 }
+
 .alert ul {
     margin: 0;
     padding-left: 1.2rem;
@@ -193,6 +209,7 @@ body {
     flex-direction: column;
     margin: 0;
 }
+
 .layout {
     flex: 1;
     display: flex;
@@ -228,6 +245,7 @@ body {
     .header__logo a {
         font-size: 1.4rem;
     }
+
     .header__nav {
         gap: 1rem;
     }
@@ -243,9 +261,11 @@ body {
    ========================= */
 @media (max-width: 640px) {
     :root {
-        --header-h: 52px; /* モバイルは少し低めにする場合 */
+        --header-h: 52px;
+        /* モバイルは少し低めにする場合 */
         --page-pad: 1rem;
-        --main-max: 100%; /* 端まで広げる */
+        --main-max: 100%;
+        /* 端まで広げる */
     }
 
     /* 固定ヘッダー分の余白を再計算 */
@@ -259,10 +279,12 @@ body {
     .header__inner {
         gap: 0.75rem;
     }
+
     .header__nav {
         gap: 0.75rem;
         flex-wrap: wrap;
     }
+
     .header__link {
         font-size: 0.95rem;
     }

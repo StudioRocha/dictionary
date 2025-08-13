@@ -22,10 +22,8 @@ class DictionaryStoreRequest extends FormRequest
     {
         return [
             'keyword.required' => 'キーワードは必須です。',
-            'description.required' => '説明は必須です。',
             'keyword.max'      => 'キーワードは255文字以内で入力してください。',
-            'body.required'    => '説明は必須です。',
-            'body.max'         => '説明は5000文字以内で入力してください。',
+            'description.required' => '説明は必須です。',
         ];
     }
 }

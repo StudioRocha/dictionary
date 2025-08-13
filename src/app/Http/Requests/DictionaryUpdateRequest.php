@@ -14,8 +14,8 @@ class DictionaryUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'keyword' => ['required', 'string', 'max:255'],
-            'body'    => ['required', 'string', 'max:5000'],
+            'keyword'     => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
         ];
     }
 
@@ -24,8 +24,7 @@ class DictionaryUpdateRequest extends FormRequest
         return [
             'keyword.required' => 'キーワードは必須です。',
             'keyword.max'      => 'キーワードは255文字以内で入力してください。',
-            'body.required'    => '説明は必須です。',
-            'body.max'         => '説明は5000文字以内で入力してください。',
+            'description.required' => '説明は必須です。',
         ];
     }
 }

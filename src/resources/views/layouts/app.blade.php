@@ -37,11 +37,14 @@
                 <a href="{{ route('dictionary.create') }}" class="header__link">登録画面へ</a>
                 @endif
 
-                {{-- ログアウト（POST） --}}
-                <form method="POST" action="{{ route('logout') }}" class="header__form" style="display:inline">
-                    @csrf
-                    <button type="submit" class="header__link header__button">ログアウト</button>
-                </form>
+               				{{-- ログアウト（POST） --}}
+				<div class="header__account">
+					<form method="POST" action="{{ route('logout') }}" class="header__form" style="display:inline">
+						@csrf
+						<button type="submit" class="header__link header__button">ログアウト</button>
+					</form>
+					<div class="header__user">user：{{ auth()->user()->name }}</div>
+				</div>
                 @endauth
 
                 @guest
