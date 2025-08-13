@@ -69,7 +69,8 @@
 /* 4カラム：日付 / ユーザー / キーワード / 説明 */
 .dict-item {
     display: grid;
-    grid-template-columns: 120px 110px 110px 180px 1fr; /* 編集＋削除の2ボタン用に少し広め */
+    /* actions | created | updated | user | keyword | description */
+    grid-template-columns: 120px 120px 120px 110px 180px 1fr;
     gap: 12px;
     padding: 0.75rem;
     border-top: 1px solid #eee;
@@ -83,6 +84,12 @@
     white-space: nowrap;
     font-size: 0.95rem;
     padding-left: 8px;
+}
+
+.dict-item__updated {
+    color: #777;
+    white-space: nowrap;
+    font-size: 0.85rem;
 }
 
 /* 先頭アクション列（編集ボタン用の空枠） */

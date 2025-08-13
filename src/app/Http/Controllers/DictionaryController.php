@@ -81,6 +81,7 @@ class DictionaryController extends Controller
 
     // ❹ 編集（要ログイン）
     public function edit(\App\Models\Dictionary $dictionary)
+    
     {
         $this->authorize('update', $dictionary);
         return view('dictionary.edit', compact('dictionary'));
