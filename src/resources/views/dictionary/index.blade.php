@@ -89,11 +89,7 @@
                 @endforelse
             </ul>
 
-
         </div>
-
-
-
 
         {{-- ページネーション --}}
         <div class="dict-index__pager">

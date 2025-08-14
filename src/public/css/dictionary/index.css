@@ -60,7 +60,7 @@
 /* 一覧 */
 .dict-list {
     list-style: none;
-    padding: 22;
+    padding: 22px;
     margin: 0;
     padding-left: 3px;
     padding-top: 32px;
@@ -117,6 +117,8 @@
     background: #ffecec;
     border-color: #f5c2c7;
     color: #a30d11;
+    font-size: 0.9rem;
+    line-height: 1;
 }
 .button-link--danger:hover {
     background: #ffd9d9;
