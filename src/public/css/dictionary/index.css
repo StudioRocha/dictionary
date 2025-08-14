@@ -213,6 +213,12 @@
     background: #eee;
     color: #111;
     cursor: pointer;
+    font-size: 0.9rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 96px;
 }
 .edit-save:hover,
 .edit-cancel:hover {
