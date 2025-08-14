@@ -108,6 +108,8 @@
     border-radius: 6px;
     background: #eee;
     color: #111;
+    font-size: 0.9rem;
+    line-height: 1;
 }
 
 /* 削除ボタン：危険色 */
@@ -156,6 +158,13 @@
     display: none;
 }
 .dict-item.is-editing .dict-item__edit {
+    display: block;
+}
+/* 追加：チェックボックスでの表示切替（JS不要） */
+.dict-item__toggle:checked ~ .dict-item__view {
+    display: none;
+}
+.dict-item__toggle:checked ~ .dict-item__edit {
     display: block;
 }
 
