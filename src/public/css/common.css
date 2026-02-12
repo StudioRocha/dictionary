@@ -1,0 +1,297 @@
+/* ========================================
+   Layout Header
+   ======================================== */
+.header {
+    background: linear-gradient(90deg, #1f2937, #111827);
+    padding: 1rem 2rem;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    /* 追加：フローティング用 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header__logo a {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+    color: #ffffff;
+    /* ✅ 明示的に白 */
+    transition: color 0.2s ease-in-out;
+    white-space: nowrap;
+    /* ✅ 改行させない */
+}
+
+.header__logo a:hover {
+    color: #e0e7ff;
+    /* ✅ 明るめに変化して視認性維持 */
+}
+
+.header__nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.header__link {
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.header__link:hover {
+    color: #ffffff;
+}
+
+
+
+.header__link.header__button {
+    color: #000000;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.footer {
+    padding: 1.5rem 2rem;
+    text-align: right;
+    background-color: #f3f4f6;
+    border-top: 1px solid #e5e7eb;
+}
+
+.footer__text {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* ========================================
+   Typography
+   ======================================== */
+body {
+    font-family: "Helvetica Neue", "Segoe UI", "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #1f2937;
+    background-color: #f9fafb;
+    margin: 0;
+    padding: 0;
+}
+
+.button:hover {
+    background: linear-gradient(90deg, #2563eb, #1d4ed8);
+    /* 少し濃いグラデーションに変化 */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   Layout Main
+   ======================================== */
+/* common.css の .main */
+/* ========================================
+   Layout Main（上部固定ヘッダー考慮のみ）
+   ======================================== */
+/* 固定ヘッダーを考慮したメイン領域 */
+.main {
+    --header-h: 60px;
+    /* ヘッダーの高さに合わせる */
+    flex: 1;
+    /* 余った高さを占有 */
+    margin-top: calc(var(--header-h) + 16px);
+    max-width: 100%;
+}
+
+/* ページ全体を縦方向に配置してフッターを下に寄せる */
+html,
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+/* .layout がヘッダー＋メイン＋フッターを含むラッパ */
+.layout {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================
+  flashMessage
+   ======================================== */
+:root {
+    --header-h: 64px;
+}
+
+/* 固定ヘッダーの高さ */
+
+.flash {
+    margin: calc(var(--header-h) + 12px) auto 12px;
+    /* ← これが重要。ヘッダー回避 */
+    max-width: 900px;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.alert {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.alert--error {
+    background: #fff5f5;
+    border-color: #f5c2c7;
+    color: #b91c1c;
+}
+
+.alert--success {
+    background: #e6ffed;
+    border-color: #a7f3d0;
+    color: #065f46;
+}
+
+.alert--warning {
+    background: #fff8e1;
+    border-color: #ffe08a;
+    color: #7c5e10;
+}
+
+.alert--info {
+    background: #e8f4ff;
+    border-color: #b6e0fe;
+    color: #0c4a6e;
+}
+
+.alert ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+/* ======================================================
+   Responsive Layout (PC-first)
+   既存の header / footer はそのまま、ここでレイアウト調整のみ
+   ------------------------------------------------------
+   Breakpoints:
+     - Tablet:  ≤ 1024px
+     - Mobile:  ≤ 640px
+   ====================================================== */
+
+/* ルート変数（必要に応じて調整） */
+
+/* ページ骨格：フッターを下寄せ */
+html,
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.layout {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* メイン：固定ヘッダー分だけ下げる。PCは広め＆左右余白あり */
+.main {
+    flex: 1;
+    margin-top: calc(var(--header-h) + 16px);
+    padding: 0 var(--page-pad);
+    max-width: var(--main-max);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+/* ヘッダーの内側もPCベースを少し広げる */
+.header__inner {
+    padding: 0 var(--page-pad);
+}
+
+/* =========================
+   ≤ 1024px (Tablet)
+   ========================= */
+@media (max-width: 1024px) {
+    :root {
+        --page-pad: 1.25rem;
+        --main-max: 920px;
+    }
+
+    .header__logo a {
+        font-size: 1.4rem;
+    }
+
+    .header__nav {
+        gap: 1rem;
+    }
+
+    .main {
+        padding-left: var(--page-pad);
+        padding-right: var(--page-pad);
+    }
+}
+
+/* =========================
+   ≤ 640px (Mobile)
+   ========================= */
+@media (max-width: 640px) {
+    :root {
+        --header-h: 52px;
+        /* モバイルは少し低めにする場合 */
+        --page-pad: 1rem;
+        --main-max: 100%;
+        /* 端まで広げる */
+    }
+
+    /* 固定ヘッダー分の余白を再計算 */
+    .main {
+        margin-top: calc(var(--header-h) + 12px);
+        padding-left: var(--page-pad);
+        padding-right: var(--page-pad);
+    }
+
+    /* ヘッダー内の並び：リンクが多い場合は折り返し */
+    .header__inner {
+        gap: 0.75rem;
+    }
+
+    .header__nav {
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .header__link {
+        font-size: 0.95rem;
+    }
+
+    /* フッターは中央寄せで窮屈さ軽減 */
+    .footer {
+        text-align: center;
+        padding: 1rem var(--page-pad);
+    }
+}

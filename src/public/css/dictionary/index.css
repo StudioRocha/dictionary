@@ -1,0 +1,476 @@
+.dict-index {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* ヘッダー行 */
+.dict-index__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.dict-index__head h2 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.dict-index__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* 検索バー */
+.dict-index__search {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+.dict-index__search input {
+    width: 260px;
+    height: 36px;
+    padding: 0 0.6rem;
+    border: 1px solid #999;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.dict-index__search button,
+.button-link {
+    height: 36px;
+    padding: 0 0.9rem;
+    border: 1px solid #999;
+    border-radius: 6px;
+    background: #f8f8f8;
+    cursor: pointer;
+    text-decoration: none;
+    color: #111;
+}
+.dict-index__search button:hover,
+.button-link:hover {
+    background: #e8e8e8;
+}
+
+/* 一覧 */
+.dict-list {
+    list-style: none;
+    padding: 22px;
+    margin: 0;
+    padding-left: 3px;
+    padding-top: 32px;
+}
+
+/* 4カラム：日付 / ユーザー / キーワード / 説明 */
+.dict-item {
+    display: grid;
+    /* actions | created | updated | user | keyword | description */
+    grid-template-columns: 120px 120px 120px 110px 180px 1fr;
+    gap: 12px;
+    padding: 0.75rem;
+    border-top: 1px solid #eee;
+}
+.dict-item:first-child {
+    border-top: none;
+}
+
+.dict-item__date {
+    color: #555;
+    white-space: nowrap;
+    font-size: 0.95rem;
+    padding-left: 8px;
+}
+
+.dict-item__updated {
+    color: #777;
+    white-space: nowrap;
+    font-size: 0.85rem;
+}
+
+/* 先頭アクション列（編集ボタン用の空枠） */
+.dict-item__actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: flex-start;
+}
+
+/* 先頭アクション列内のボタンは他のボタンと同じ見た目に */
+.dict-item__actions .button-link {
+    height: 32px;
+    padding: 0 0.8rem;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    background: #eee;
+    color: #111;
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+/* 削除ボタン：危険色 */
+.button-link--danger {
+    background: #ffecec;
+    border-color: #f5c2c7;
+    color: #a30d11;
+    font-size: 0.9rem;
+    line-height: 1;
+}
+.button-link--danger:hover {
+    background: #ffd9d9;
+}
+
+.dict-item__user {
+    color: #666;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.dict-item__keyword {
+    font-weight: 700;
+    color: #111;
+    white-space: nowrap; /* 折り返さない */
+    overflow: hidden; /* はみ出し隠す */
+    text-overflow: ellipsis; /* 省略記号 */
+    max-width: 100%;
+    display: inline-block;
+}
+
+.dict-item__desc {
+    color: #333;
+    line-height: 1.55;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    font-size: 0.95rem;
+}
+
+/* ===== インライン編集（本人のみ） ===== */
+.dict-item__view {
+    display: contents;
+}
+.dict-item__edit {
+    display: none;
+    grid-column: 1 / -1;
+}
+.dict-item.is-editing .dict-item__view {
+    display: none;
+}
+.dict-item.is-editing .dict-item__edit {
+    display: block;
+}
+/* 追加：チェックボックスでの表示切替（JS不要） */
+.dict-item__toggle:checked ~ .dict-item__view {
+    display: none;
+}
+.dict-item__toggle:checked ~ .dict-item__edit {
+    display: block;
+}
+
+.dict-item--mine {
+    background: #afc9ff;
+}
+.edit-fields {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 8px 12px;
+    align-items: start;
+}
+.edit-field {
+    display: contents;
+}
+.edit-label {
+    color: #555;
+    font-size: 0.9rem;
+    padding-top: 6px;
+}
+.dict-item__edit input[type="text"],
+.dict-item__edit textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px 8px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+.dict-item__edit textarea {
+    min-height: 88px;
+    line-height: 1.6;
+}
+.edit-actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end; /* 右寄せ */
+}
+.edit-save,
+.edit-cancel {
+    height: 32px;
+    padding: 0 0.9rem;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    background: #eee;
+    color: #111;
+    cursor: pointer;
+    font-size: 0.9rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 96px;
+}
+.edit-save:hover,
+.edit-cancel:hover {
+    background: #e5e5e5;
+}
+
+@media (max-width: 640px) {
+    .edit-fields {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 検索フォームのセレクトを入力と合わせる */
+.dict-index__search select {
+    height: 32px;
+    padding: 0 0.6rem;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+/* スマホは1カラムに崩す */
+@media (max-width: 640px) {
+    .dict-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+    .dict-item__user {
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== スマホ対応（～640px） ===== */
+@media (max-width: 640px) {
+    .dict-index {
+        padding: 0.85rem 1rem;
+    }
+
+    /* タイトルと右のボタンを縦積み＋幅100% */
+    .dict-index__head {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    .dict-index__actions {
+        justify-content: flex-end; /* ボタンは右寄せ */
+    }
+
+    /* 検索バー：折り返し＆入力は全幅 */
+    .dict-index__search {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .dict-index__search input {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+    .dict-index__search button {
+        flex: 0 0 auto; /* ボタンは内容幅 */
+    }
+
+    /* 一覧は1カラム（既に対応済みなら不要） */
+    .dict-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+    .dict-item__user {
+        text-align: left;
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== さらに狭い端末（～480px）でボタンを横幅そろえる ===== */
+@media (max-width: 480px) {
+    .dict-index__actions .button-link {
+        width: 100%; /* 右上の「登録画面へ」を全幅に */
+        text-align: center;
+    }
+    .dict-index__search button {
+        width: 100%; /* 検索ボタンも全幅にしたい場合は有効化 */
+    }
+}
+
+/* タイトル行：左タイトル / 右にボタン */
+.dict-index__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem; /* ← タイトルと検索フォームの間を詰める */
+}
+.dict-index__head h2 {
+    margin: 0;
+    font-size: 1rem; /* スクショ寄りに小さめ */
+    font-weight: 600;
+    color: #333;
+}
+
+/* 右上ボタン */
+.button-link {
+    height: 32px; /* 少し低め */
+    padding: 0 0.8rem;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    background: #eee;
+    cursor: pointer;
+    text-decoration: none;
+    color: #111;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.button-link:hover {
+    background: #e5e5e5;
+}
+
+/* 検索フォーム（左寄せで下に配置） */
+.dict-index__search {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.5rem; /* リストとの間 */
+}
+.dict-index__search input {
+    width: 320px; /* スクショっぽく少し長め */
+    height: 32px;
+    padding: 0 0.6rem;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.dict-index__search button {
+    height: 32px;
+    padding: 0 0.9rem;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    background: #eee;
+    color: #111;
+    cursor: pointer;
+}
+.dict-index__search button:hover {
+    background: #e5e5e5;
+}
+
+/* スマホ：縦積み崩れ防止 */
+@media (max-width: 640px) {
+    .dict-index {
+        padding: 0.85rem 1rem 1rem;
+    }
+    .dict-index__head {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    .dict-index__actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .dict-index__search {
+        flex-wrap: wrap;
+    }
+    .dict-index__search input {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    .dict-index__search select {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+}
+
+/* ===== ページネーション（中央下・シンプル・1行） ===== */
+.dict-index__pager-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto 1.5rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.dict-index__pager nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dict-index__pager .pagination {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+.dict-index__pager .pagination li {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dict-index__pager .pagination li a,
+.dict-index__pager .pagination li span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.5rem;
+    min-height: 1.5rem;
+    text-decoration: none;
+    color: #333;
+}
+
+.dict-index__pager .pagination li a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.dict-index__pager .pagination li.active span {
+    font-weight: 700;
+    color: #000;
+}
+
+.dict-index__pager .pagination li.disabled span {
+    color: #999;
+}
+
+/* 前へ・次へ（‹ ›）の矢印を少し大きく */
+.dict-index__pager .pagination li:first-child a,
+.dict-index__pager .pagination li:first-child span,
+.dict-index__pager .pagination li:last-child a,
+.dict-index__pager .pagination li:last-child span {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 640px) {
+    .dict-index__pager-wrapper {
+        margin: 1.5rem auto 1rem;
+    }
+    .dict-index__pager .pagination {
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

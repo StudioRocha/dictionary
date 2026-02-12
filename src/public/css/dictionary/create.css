@@ -1,0 +1,63 @@
+/* 辞書作成ページ専用CSS */
+
+/* main内のフォームを中央寄せ */
+.dictionary-register {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 1.5rem 2rem;
+    max-width: 700px;
+    margin: 0 auto; /* 中央寄せ */
+    box-sizing: border-box;
+    min-height: 100px; /* ← 最低高さを指定 */
+}
+
+/* 説明 */
+.input {
+    height: 40px; /* キーワード入力欄の高さ */
+}
+
+.textarea {
+    min-height: 130px; /* 説明欄の高さ */
+}
+
+/* タイトル */
+.dictionary-register__title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+/* フォームグループ間の余白 */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* 入力欄 */
+.input,
+.textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #999;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* ボタン部分 */
+.form-actions {
+    text-align: center;
+}
+
+.btn--primary {
+    background: #f8f8f8;
+    border: 1px solid #999;
+    border-radius: 6px;
+    padding: 0.4rem 1.2rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn--primary:hover {
+    background: #e8e8e8;
+}
